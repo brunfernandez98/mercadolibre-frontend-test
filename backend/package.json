@@ -35,5 +35,9 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.3.0"
+  },
+  "resolutions": {
+    "rimraf": "^4.0.0",
+    "glob": "^9.0.0"
   }
 }
