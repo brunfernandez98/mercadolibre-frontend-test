@@ -1,5 +1,6 @@
-import axios from "axios"
 import { NextFunction, Request, Response } from "express"
+
+import { getProductData } from "@/services/productService"
 
 export const getProductById = async (
   req: Request,
@@ -7,16 +8,8 @@ export const getProductById = async (
   next: NextFunction
 ) => {
   try {
-    const id = req.params
-    const response = await axios.get(
-      `https://api.mercadolibre.com/products/${id}`
-    )
-    const { name, attributes, pictures } = response.data
-    const productData = {
-      name,
-      attributes,
-      pictures,
-    }
+    const { id } = req.params
+    const productData = await getProductData(id)
     res.json(productData)
   } catch (error) {
     next(error)

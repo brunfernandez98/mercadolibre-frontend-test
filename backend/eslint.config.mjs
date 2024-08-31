@@ -27,5 +27,8 @@ export default [
       eqeqeq: ["error", "always"],
       "@typescript-eslint/no-explicit-any": 0,
     },
+    env: {
+      jest: true,
+    },
   },
 ]
