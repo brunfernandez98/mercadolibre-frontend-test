@@ -131,3 +131,6 @@ dist
 
 # Workspace
 *.code-workspace
+
+# VSCODE - DEBUG CONFIG
+*launch.json

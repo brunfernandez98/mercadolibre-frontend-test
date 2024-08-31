@@ -1,6 +1,9 @@
 export enum MercadoLibre {
-  // eslint-disable-next-line no-unused-vars
   PRODUCTS = "/items",
   DESCRIPTION = "/description",
   CATEGORIES = "/categories",
+}
+
+export const config = {
+  baseUrl: process.env.MERCADO_LIBRE_API_URL,
 }

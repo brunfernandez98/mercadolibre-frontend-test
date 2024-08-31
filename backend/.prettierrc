@@ -11,6 +11,7 @@
     "^dotenv$",
     "^axios",
     "<THIRD_PARTY_MODULES>",
+    "^@/config/(.*)$",
     "^@/core/(.*)$",
     "^@/server/(.*)$",
     "^@/ui/(.*)$",
@@ -18,7 +19,6 @@
     "^@/controllers/(.*)$",
     "^@/routes/(.*)$",
     "^@/services/(.*)$",
-    "^@/config/(.*)$",
     "^[./]"
   ],
   "importOrderSeparation": true,
