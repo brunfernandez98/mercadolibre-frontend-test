@@ -12,7 +12,9 @@ export const getProductData = async (id: string): Promise<Product> => {
   try {
     const [responseItem, responseDescription] = await Promise.all([
       axios.get(`${baseUrl}${MercadoLibre.PRODUCTS}/${id}`),
-      axios.get(`${baseUrl}/items/${id}/description`),
+      axios.get(
+        `${baseUrl}${MercadoLibre.PRODUCTS}${id}/${MercadoLibre.DESCRIPTION}`
+      ),
     ])
 
     const data = responseItem.data

@@ -30,11 +30,12 @@ describe("getProductById Controller", () => {
   it("should respond with product data when getProductData resolves", async () => {
     const mockProductData = {
       id: "MLA123456",
-      name: "Sample Product",
-      attributes: [{ id: "BRAND", name: "Brand", value_name: "BrandName" }],
+      name: "PlayStation 5",
+      categories: "GAME#CONSOLE#PLAY",
       pictures: [{ id: "1", url: "http://meliexample.com/image.jpg" }],
       currency: "USD",
       price: 100,
+      description: "This is a sample PLAY5 description.",
     }
 
     mockedGetProductData.mockResolvedValueOnce(mockProductData)

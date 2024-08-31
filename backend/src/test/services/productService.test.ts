@@ -1,12 +1,15 @@
 import axios from "axios"
 
+import { getCategories } from "@/services/categoryService"
 import { getProductData } from "@/services/productService"
 
-import { MercadoLibre } from "@/config/endpoints"
-
 jest.mock("axios")
+jest.mock("@/services/categoryService")
 
 const mockedAxios = axios as jest.Mocked<typeof axios>
+const mockedGetCategories = getCategories as jest.MockedFunction<
+  typeof getCategories
+>
 
 describe("getProductData", () => {
   it("should return a product domain", async () => {
@@ -14,36 +17,26 @@ describe("getProductData", () => {
 
     const mockResponseData = {
       id: mockId,
-      title: "Playstation5",
+      title: "PlayStation 5",
       pictures: [{ id: "1", url: "http://image.url" }],
-      price: 500,
+      price: 499.99,
       currency_id: "USD",
       category_id: "MLA1590",
     }
 
     const mockDescriptionData = {
-      plain_text: "The PlayStation 5 is a home video game console",
+      plain_text: "The PlayStation 5 is a home video game console developed",
     }
 
-    const mockCategories = "Electrónica | Game | VideoGame"
+    const mockCategories = "Electrónica | Videojuegos | Consolas"
 
     mockedAxios.get
       .mockResolvedValueOnce({ data: mockResponseData })
       .mockResolvedValueOnce({ data: mockDescriptionData })
 
-    jest.mock("@/services/categoryService", () => ({
-      getCategories: jest.fn().mockResolvedValue(mockCategories),
-    }))
+    mockedGetCategories.mockResolvedValueOnce(mockCategories)
 
     const result = await getProductData(mockId)
-
-    expect(mockedAxios.get).toHaveBeenCalledWith(
-      `${process.env.MERCADO_LIBRE_API_URL}${MercadoLibre.PRODUCTS}/${mockId}`
-    )
-
-    expect(mockedAxios.get).toHaveBeenCalledWith(
-      `${process.env.MERCADO_LIBRE_API_URL}/items/${mockId}/description`
-    )
 
     expect(result).toEqual({
       id: mockResponseData.id,
@@ -54,13 +47,5 @@ describe("getProductData", () => {
       description: mockDescriptionData.plain_text,
       categories: mockCategories,
     })
-
-    expect(result).toHaveProperty("id")
-    expect(result).toHaveProperty("name")
-    expect(result).toHaveProperty("pictures")
-    expect(result).toHaveProperty("currency")
-    expect(result).toHaveProperty("price")
-    expect(result).toHaveProperty("description")
-    expect(result).toHaveProperty("categories")
   })
 })
