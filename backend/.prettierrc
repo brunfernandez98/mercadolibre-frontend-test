@@ -9,6 +9,7 @@
   "arrowParens": "avoid",
   "importOrder": [
     "^dotenv$",
+    "^axios",
     "<THIRD_PARTY_MODULES>",
     "^@/core/(.*)$",
     "^@/server/(.*)$",
