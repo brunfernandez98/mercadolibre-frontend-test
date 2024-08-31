@@ -9,10 +9,11 @@
     "test": "jest"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Bruno Fernandez",
+  "license": "MIT",
   "description": "",
   "dependencies": {
+    "axios": "^1.7.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
   },

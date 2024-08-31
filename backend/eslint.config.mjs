@@ -25,6 +25,7 @@ export default [
       "no-unused-vars": ["error", { args: "none" }],
       indent: ["error", 2],
       eqeqeq: ["error", "always"],
+      "@typescript-eslint/no-explicit-any": 0,
     },
   },
 ]
