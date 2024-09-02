@@ -1,0 +1,41 @@
+@import '../../breakpoints.scss';
+
+.breadcrumb {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  font-size: 14px;
+  color: #0f0be8;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  margin-right: 4px;
+
+  .breadcrumb__item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+
+    &:hover {
+      color: #007bff;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .breadcrumb__separator {
+    margin: 0 2px;
+    color: #ccc;
+    font-weight: bold;
+  }
+
+  @include breakpoint(sm) {
+    font-size: 18px;
+  }
+}

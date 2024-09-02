@@ -1,0 +1,52 @@
+@import '../../breakpoints.scss';
+
+.button {
+  padding: 10px 20px;
+  width: 100%;
+  max-width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &.primary {
+    background-color: #3483fa;
+    color: white;
+
+    &:hover {
+      background-color: #2968c8;
+    }
+  }
+
+  &.secondary {
+    background-color: #007bff;
+    color: white;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  &.danger {
+    background-color: #dc3545;
+    color: white;
+
+    &:hover {
+      background-color: #c82333;
+    }
+  }
+
+  @include breakpoint(md) {
+    width: 80%;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  @include breakpoint(sm) {
+    width: 100%;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

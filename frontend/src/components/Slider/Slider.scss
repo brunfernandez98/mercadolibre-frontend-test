@@ -1,0 +1,73 @@
+@import '../../breakpoints.scss';
+
+.slider {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .slides {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__image {
+      mask-image: linear-gradient(black 80%, transparent);
+      object-fit: contain;
+      width: 100%;
+      height: auto;
+
+      @include breakpoint(md) {
+        height: 250px;
+      }
+
+      @include breakpoint(sm) {
+        height: 200px;
+      }
+
+      @include breakpoint(lg) {
+        height: 400px;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    border-radius: 50%;
+
+    &.nav-left {
+      left: 15px;
+    }
+
+    &.nav-right {
+      right: 15px;
+    }
+
+    &:hover {
+      background-color: rgba(239, 231, 5, 0.87);
+      svg {
+        color: black;
+      }
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

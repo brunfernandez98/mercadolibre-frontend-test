@@ -11,17 +11,17 @@ const Home = () => {
         <title>Mercado Libre Test Frontend - Buscando tu producto ideal</title>
 
         <meta
-          name="description"
           content="Compra en Mercado Libre y disfruta de tu Buscador. Encuentra las mejores marcas y productos a precios inigualables."
+          name="description"
         />
         <meta
-          property="og:title"
           content="Ofertas y Envíos Gratis - Mercado Libre"
+          property="og:title"
         />
-        <meta property="og:image" content={meli_logo} />
+        <meta content={meli_logo} property="og:image" />
         <meta
-          property="og:description"
           content="Descubre increíbles ofertas en Mercado Libre. Compra hoy y recibe tus productos"
+          property="og:description"
         />
       </Helmet>
       <Header />

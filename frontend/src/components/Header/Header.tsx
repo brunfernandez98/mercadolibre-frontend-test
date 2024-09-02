@@ -6,13 +6,13 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <Link to="/" className="header__logo-link">
+        <Link className="header__logo-link" to="/">
           <img
+            alt="mercado-libre-logo"
+            className="header__logo-image"
+            height={54}
             src={meli_logo}
             width={180}
-            height={54}
-            className="header__logo-image"
-            alt="mercado-libre-logo"
           />
         </Link>
       </div>
@@ -20,8 +20,8 @@ const Header = () => {
         <ul className="header__nav-list">
           <li className="header__nav-item">
             <Link
-              to="https://www.mercadolibre.com.uy/ayuda#nav-header"
               className="header__nav-link"
+              to="https://www.mercadolibre.com.uy/ayuda#nav-header"
             >
               Ayuda
             </Link>

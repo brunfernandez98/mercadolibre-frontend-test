@@ -16,7 +16,7 @@ $button-bg-color: rgba(0, 123, 255, 0.1);
 $button-hover-bg-color: rgba(0, 86, 179, 0.2);
 $button-text-color: #007bff;
 $icon-color: #cccccc;
-$icon-reset-color: #ff0000;
+$icon-reset-color: #2d2828;
 
 .container-wrapper {
   display: flex;
@@ -30,11 +30,12 @@ $icon-reset-color: #ff0000;
 .search-container {
   background-color: $bg-color;
   margin-top: 40px;
+  margin-bottom: 40px;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   padding: 15px;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
 
   &__search-bar {
     display: flex;
@@ -144,5 +145,8 @@ $icon-reset-color: #ff0000;
         right: 140px;
       }
     }
+  }
+  .search-container_product-container {
+    margin-top: 30px;
   }
 }
