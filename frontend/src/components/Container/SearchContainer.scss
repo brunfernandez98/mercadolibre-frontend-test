@@ -5,6 +5,7 @@ $box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 $border-radius: 8px;
 $input-padding: 10px 40px 10px 50px;
 $input-font-size: 14px;
+$button-font-size: 14px;
 $input-border-color: #ccc;
 $input-bg-color: #f9f9f9;
 $input-text-color: #333;
@@ -17,6 +18,9 @@ $button-hover-bg-color: rgba(0, 86, 179, 0.2);
 $button-text-color: #007bff;
 $icon-color: #cccccc;
 $icon-reset-color: #2d2828;
+
+$input-font-size-md: 18px;
+$button-font-size-md: 18px;
 
 .container-wrapper {
   display: flex;
@@ -76,7 +80,7 @@ $icon-reset-color: #2d2828;
       border-radius: $border-radius;
       color: $button-text-color;
       cursor: pointer;
-      font-size: 14px;
+      font-size: $button-font-size;
       transition: background-color 0.3s ease, transform 0.3s ease;
 
       &:hover {
@@ -139,6 +143,17 @@ $icon-reset-color: #2d2828;
 
   @include breakpoint(md) {
     &__search-bar {
+      &__input {
+        font-size: $input-font-size-md;
+        &::placeholder {
+          font-size: $input-font-size-md;
+        }
+      }
+
+      &__button {
+        font-size: $button-font-size-md;
+      }
+
       &__icon_search,
       &__icon_reset {
         transform: translateY(-50%);
@@ -146,6 +161,7 @@ $icon-reset-color: #2d2828;
       }
     }
   }
+
   .search-container_product-container {
     margin-top: 30px;
   }

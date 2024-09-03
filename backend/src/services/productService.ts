@@ -2,9 +2,9 @@ import axios from "axios"
 
 import { Product, mapToProduct } from "@/models/product"
 
-import { getCategories } from "@/services/categoryService"
-
 import { MercadoLibre, config } from "@/config/endpoints"
+
+import { getCategories } from "@/services/categoryService"
 
 export const getProductData = async (id: string): Promise<Product> => {
   const [responseItem, responseDescription] = await Promise.all([

@@ -1,14 +1,23 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Layout from './pages/Layout'
 
-import Home from './pages/Home'
+import { lazy } from 'react'
+import NotFound from './pages/NotFound'
 
-function App() {
+const HomePage = lazy(() => import('./pages/Home'))
+const ProductPage = lazy(() => import('./pages/Product'))
+
+const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route element={<Layout />} path="/">
+          <Route index element={<HomePage />} />
+          <Route element={<ProductPage />} path="products/:id" />
+        </Route>
+        <Route element={<NotFound />} path="*" />
       </Routes>
-    </BrowserRouter>
+    </Router>
   )
 }
 

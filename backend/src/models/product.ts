@@ -1,3 +1,5 @@
+import { Attribute } from "./attribute"
+
 export interface Product {
   id: string
   name: string
@@ -6,6 +8,7 @@ export interface Product {
   price: number
   description: string
   categories: string
+  attributes: Attribute[]
 }
 
 export const mapToProduct = (responseData: any): Product => {
@@ -16,6 +19,7 @@ export const mapToProduct = (responseData: any): Product => {
       id: pic.id,
       url: pic.url,
     })),
+    attributes: responseData.attributes,
     currency: responseData.currency_id,
     price: responseData.price,
     description: responseData.description,

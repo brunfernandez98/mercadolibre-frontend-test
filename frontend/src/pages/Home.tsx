@@ -1,8 +1,6 @@
-import Header from '../components/Header/Header'
 import meli_logo from '../assets/meli_logo.png'
 
 import Helmet from 'react-helmet'
-import SearchContainer from '../components/Container/SearchContainer'
 
 const Home = () => {
   return (
@@ -24,8 +22,6 @@ const Home = () => {
           property="og:description"
         />
       </Helmet>
-      <Header />
-      <SearchContainer />
     </>
   )
 }

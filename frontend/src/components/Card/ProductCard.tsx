@@ -4,6 +4,7 @@ import './ProductCard.scss'
 import { formatPrice, formatText } from '../../helpers/formatters'
 import Slider from '../Slider/Slider'
 import Button from '../Button/Button'
+import { Attribute } from '../../domain/attribute'
 
 interface ProductCardProps {
   id: string
@@ -12,6 +13,7 @@ interface ProductCardProps {
   currency: string
   price: number
   description: string
+  attributes: Array<Attribute>
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -20,7 +22,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   pictures,
   currency,
   price,
-  description
+  description,
+  attributes
 }) => {
   const formattedPrice = formatPrice(price, currency)
 
@@ -36,8 +39,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <span className="product-price">{formattedPrice}</span>
           <Button variant="primary">Comprar</Button>
           <div className="product-attributes">
-            <span>Atributo 1: Valor</span>
-            <span>Atributo 2: Valor</span>
+            {attributes?.map((attribute) => (
+              <span key={attribute.id}>
+                {attribute.name}: {attribute.value_name}
+              </span>
+            ))}
           </div>
         </div>
       </div>
