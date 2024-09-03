@@ -54,7 +54,7 @@ const ProductPage = () => {
       <Helmet>
         <title>Mercado Libre producto id: {id}</title>
         <meta
-          content={`Envíos Gratis en el día ✓ Compre ${product.name} en cuotas sin interés! Conozca nuestras increíbles ofertas y promociones en millones de productos.`}
+          content={`Envíos Gratis en el día Compre ${product.name} en cuotas sin interés!`}
           name="description"
         />
       </Helmet>

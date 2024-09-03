@@ -38,6 +38,12 @@ const SearchContainer: React.FC<SearchContainerProps> = ({ children }) => {
     <div className="container-wrapper">
       <div className="search-container">
         <form className="search-container__search-bar" onSubmit={handleSubmit}>
+          <label
+            className="search-container__search-bar__label-hidden"
+            htmlFor="id"
+          >
+            Ingrese el ID del producto
+          </label>
           <FaSearch className="search-container__search-bar__icon_search" />
           <FaTimes
             className="search-container__search-bar__icon_reset"

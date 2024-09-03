@@ -17,4 +17,14 @@
 
 .not-found-message {
   font-size: 1.5rem;
+  background-color: #3483fa;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #f5c6cb;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  text-wrap: wrap;
+  margin: 20px auto;
 }

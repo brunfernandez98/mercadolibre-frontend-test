@@ -23,7 +23,7 @@ export const getProductById = async (
   const product: Product = {
     id: data.id,
     name: data.name,
-    attribute: data.attribute,
+    attribute: data.attributes,
     description: data.description,
     pictures: data.pictures,
     price: data.price,

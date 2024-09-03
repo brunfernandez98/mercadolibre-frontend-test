@@ -75,12 +75,25 @@
       list-style-type: disc;
       padding-left: 20px;
       margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
 
-      span {
+      li,
+      .show-more-button {
         display: list-item;
         margin-bottom: 5px;
         font-size: 14px;
         color: #444;
+      }
+
+      .show-more-button {
+        background: none;
+        border: none;
+        color: #007bff;
+        cursor: pointer;
+        text-decoration: underline;
       }
     }
 
