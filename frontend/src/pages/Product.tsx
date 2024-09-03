@@ -1,30 +1,33 @@
-import { Helmet } from 'react-helmet'
-import { useParams } from 'react-router-dom'
-import ProductCard from '../components/Card/ProductCard'
-import BreadCrumb from '../components/BreadCrumb/BreadCrumb'
-import useProductById from '../hooks/useProductById'
-import { formatCategories } from '../helpers/formatters'
-import SkeletonCard from '../components/Loading/Skeleton'
-import NotFoundContainer from '../components/Container/NotFoundContainer'
-import { useEffect, useMemo } from 'react'
-import { useLoadingContext } from '../hooks/useSearchContext'
+import { formatCategories } from "helpers/formatters";
+import { useLoadingContext } from "hooks/useLoadingContext";
+import useProductById from "hooks/useProductById";
+
+import { useEffect, useMemo } from "react";
+
+import { Helmet } from "react-helmet";
+import { useParams } from "react-router-dom";
+
+import BreadCrumb from "@components/BreadCrumb/BreadCrumb";
+import ProductCard from "@components/Card/ProductCard";
+import NotFoundContainer from "@components/Container/NotFoundContainer";
+import SkeletonCard from "@components/Loading/Skeleton";
 
 const ProductPage = () => {
-  const { id } = useParams<string>()
-  const { product, loading, error } = useProductById(id)
-  const { setLoading } = useLoadingContext()
+  const { id } = useParams<string>();
+  const { product, loading, error } = useProductById(id);
+  const { setLoading } = useLoadingContext();
 
   const formattedCategories = useMemo(() => {
-    return product ? formatCategories(product.categories) : []
-  }, [product])
+    return product ? formatCategories(product.categories) : [];
+  }, [product]);
 
   useEffect(() => {
-    setLoading(loading)
-  }, [loading, setLoading])
+    setLoading(loading);
+  }, [loading, setLoading]);
 
-  if (loading) return <SkeletonCard />
+  if (loading) return <SkeletonCard />;
 
-  if (error) return <div>Error buscando el producto</div>
+  if (error) return <div>Error buscando el producto</div>;
 
   if (!product) {
     return (
@@ -32,11 +35,11 @@ const ProductPage = () => {
         isPage={false}
         message={`El producto con ID: ${id} no fue encontrado`}
       />
-    )
+    );
   }
 
   if (!product) {
-    return null
+    return null;
   }
 
   const {
@@ -46,8 +49,8 @@ const ProductPage = () => {
     description,
     price,
     currency,
-    attribute
-  } = product
+    attribute,
+  } = product;
 
   return (
     <>
@@ -69,7 +72,7 @@ const ProductPage = () => {
         price={price}
       />
     </>
-  )
-}
+  );
+};
 
-export default ProductPage
+export default ProductPage;

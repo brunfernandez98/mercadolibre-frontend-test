@@ -1,8 +1,9 @@
-import React from 'react'
-import './BreadCrumb.scss'
+import React from "react";
+
+import "./BreadCrumb.scss";
 
 interface BreadCrumbProps {
-  paths: string[]
+  paths: string[];
 }
 
 const BreadCrumb: React.FC<BreadCrumbProps> = ({ paths }) => {
@@ -17,7 +18,7 @@ const BreadCrumb: React.FC<BreadCrumbProps> = ({ paths }) => {
         </span>
       ))}
     </nav>
-  )
-}
+  );
+};
 
-export default BreadCrumb
+export default BreadCrumb;

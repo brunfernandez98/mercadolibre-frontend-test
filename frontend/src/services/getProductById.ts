@@ -1,24 +1,27 @@
-import { Product } from '../domain/Product'
-import { config, ServerEndpoints } from '../endpoints/endpoints'
+import { Product } from "@domain/Product";
+
+import { ServerEndpoints, config } from "@endpoints/endpoints";
+
+
 
 export const getProductById = async (
-  id: string | number
+  id: string | number,
 ): Promise<Product | null> => {
-  const url = `${config.baseUrl}${ServerEndpoints.PRODUCTS}/${id}`
+  const url = `${config.baseUrl}${ServerEndpoints.PRODUCTS}/${id}`;
 
-  const response = await fetch(url)
+  const response = await fetch(url);
 
   if (response.status === 404) {
-    return null
+    return null;
   }
 
   if (!response.ok) {
     throw new Error(
-      `Error fetching one product with ID ${id}: ${response.statusText}`
-    )
+      `Error fetching one product with ID ${id}: ${response.statusText}`,
+    );
   }
 
-  const data = await response.json()
+  const data = await response.json();
 
   const product: Product = {
     id: data.id,
@@ -28,8 +31,8 @@ export const getProductById = async (
     pictures: data.pictures,
     price: data.price,
     categories: data.categories,
-    currency: data.currency
-  }
+    currency: data.currency,
+  };
 
-  return product
-}
+  return product;
+};

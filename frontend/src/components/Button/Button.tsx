@@ -1,22 +1,23 @@
-import React, { ReactNode } from 'react'
-import './Button.scss'
+import React, { ReactNode } from "react";
+
+import "./Button.scss";
 
 interface ButtonProps {
-  variant?: 'primary' | 'text'
-  children: ReactNode
-  onClick?: () => void
+  variant?: "primary" | "text";
+  children: ReactNode;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  variant = 'primary',
+  variant = "primary",
   onClick,
-  children
+  children,
 }) => {
   return (
     <button className={`button ${variant}`} onClick={onClick}>
-      {children}{' '}
+      {children}{" "}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

@@ -13,16 +13,16 @@ export interface Product {
 
 export const mapToProduct = (responseData: any): Product => {
   return {
-    id: responseData.id,
-    name: responseData.title,
-    pictures: responseData.pictures.map((pic: any) => ({
+    id: responseData?.id,
+    name: responseData?.title,
+    pictures: responseData?.pictures?.map((pic: any) => ({
       id: pic.id,
       url: pic.url,
     })),
-    attributes: responseData.attributes,
-    currency: responseData.currency_id,
-    price: responseData.price,
-    description: responseData.description,
-    categories: responseData.categories,
+    attributes: responseData?.attributes,
+    currency: responseData?.currency_id,
+    price: responseData?.price,
+    description: responseData?.description,
+    categories: responseData?.categories,
   }
 }

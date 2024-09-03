@@ -1,6 +1,6 @@
-import meli_logo from '../assets/meli_logo.png'
+import Helmet from "react-helmet";
 
-import Helmet from 'react-helmet'
+import meli_logo from "@assets/meli_logo.png";
 
 const Home = () => {
   return (
@@ -23,7 +23,7 @@ const Home = () => {
         />
       </Helmet>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

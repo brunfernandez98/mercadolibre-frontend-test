@@ -1,0 +1,25 @@
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer {
+  background-color: #1a1a1a;
+  padding: 20px 0;
+  text-align: center;
+  color: #f0f0f0;
+  font-size: 1rem;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+}
+
+.footer-text {
+  margin: 0;
+}
+
+.footer-text strong {
+  color: #ffcc00;
+  font-weight: 600;
+}

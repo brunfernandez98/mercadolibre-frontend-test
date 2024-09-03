@@ -1,5 +1,5 @@
 export enum MercadoLibre {
-  PRODUCTS = "/items",
+  PRODUCTS = "/products",
   DESCRIPTION = "/description",
   CATEGORIES = "/categories",
 }

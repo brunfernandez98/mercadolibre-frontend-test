@@ -18,7 +18,21 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    /* Base URL and Paths */
+    "baseUrl": "./src", // Esto define la carpeta base para los imports
+    "paths": {
+      "@components/*": ["components/*"],
+      "@domain/*": ["domain/*"],
+      "@services/*": ["services/*"],
+      "@pages/*": ["pages/*"],
+      "@endpoints/*": ["endpoints/*"],
+      "@context/*": ["context/*"],
+      "@helpers/*": ["helpers/*"],
+      "@assets/*": ["assets/*"],
+      "@hooks/*": ["hooks/*"]
+    }
   },
   "include": ["src"]
 }

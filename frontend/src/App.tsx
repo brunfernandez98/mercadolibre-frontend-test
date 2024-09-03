@@ -1,11 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Layout from './pages/Layout'
+import { lazy } from "react";
 
-import { lazy } from 'react'
-import NotFound from './pages/NotFound'
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
-const HomePage = lazy(() => import('./pages/Home'))
-const ProductPage = lazy(() => import('./pages/Product'))
+import Layout from "@pages/Layout";
+import NotFound from "@pages/NotFound";
+
+const HomePage = lazy(() => import("./pages/Home"));
+const ProductPage = lazy(() => import("./pages/Product"));
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
         <Route element={<NotFound />} path="*" />
       </Routes>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;

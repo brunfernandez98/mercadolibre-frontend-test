@@ -1,24 +1,23 @@
-import React, { useState } from 'react'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
-
-import './Slider.scss'
+import React, { useState } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import "./Slider.scss";
 
 interface SliderProps {
-  pictures: Array<{ id: string; url: string }>
+  pictures: Array<{ id: string; url: string }>;
 }
 
 const Slider: React.FC<SliderProps> = ({ pictures }) => {
-  const [showIndex, setShowIndex] = useState<number>(0)
+  const [showIndex, setShowIndex] = useState<number>(0);
 
   const nextImage = () => {
-    setShowIndex((currentIndex) => (currentIndex + 1) % pictures.length)
-  }
+    setShowIndex((currentIndex) => (currentIndex + 1) % pictures.length);
+  };
 
   const prevImage = () => {
     setShowIndex(
-      (currentIndex) => (currentIndex - 1 + pictures.length) % pictures.length
-    )
-  }
+      (currentIndex) => (currentIndex - 1 + pictures.length) % pictures.length,
+    );
+  };
 
   return (
     <div className="slider">
@@ -27,7 +26,7 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
           <div
             key={picture.id}
             style={{
-              display: index === showIndex ? 'block' : 'none'
+              display: index === showIndex ? "block" : "none",
             }}
           >
             <img
@@ -46,7 +45,7 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
         <FaArrowRight />
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Slider
+export default Slider;
