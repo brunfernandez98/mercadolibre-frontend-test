@@ -1,15 +1,14 @@
 import { Product } from "@domain/Product";
+import { ServerEndpoints, config } from "@endpoints/config";
 
-import { ServerEndpoints, config } from "@endpoints/endpoints";
-
-
+import { coreFetch } from "./coreFetch";
 
 export const getProductById = async (
   id: string | number,
 ): Promise<Product | null> => {
   const url = `${config.baseUrl}${ServerEndpoints.PRODUCTS}/${id}`;
 
-  const response = await fetch(url);
+  const response = await coreFetch(url);
 
   if (response.status === 404) {
     return null;
@@ -24,14 +23,16 @@ export const getProductById = async (
   const data = await response.json();
 
   const product: Product = {
-    id: data.id,
-    name: data.name,
-    attribute: data.attributes,
-    description: data.description,
-    pictures: data.pictures,
-    price: data.price,
-    categories: data.categories,
-    currency: data.currency,
+    id: data?.id,
+    catalog_id: data?.id,
+    name: data?.name,
+    attributes: data?.attributes,
+    description: data?.description,
+    pictures: data?.pictures,
+    price: data?.price,
+    categories: data?.categories,
+    currency: data?.currency,
+    status: data?.status,
   };
 
   return product;

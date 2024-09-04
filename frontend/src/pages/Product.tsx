@@ -18,7 +18,9 @@ const ProductPage = () => {
   const { setLoading } = useLoadingContext();
 
   const formattedCategories = useMemo(() => {
-    return product ? formatCategories(product.categories) : [];
+    return product && product.categories
+      ? formatCategories(product.categories)
+      : [];
   }, [product]);
 
   useEffect(() => {
@@ -49,7 +51,9 @@ const ProductPage = () => {
     description,
     price,
     currency,
-    attribute,
+    attributes,
+    catalog_id,
+    status,
   } = product;
 
   return (
@@ -63,13 +67,15 @@ const ProductPage = () => {
       </Helmet>
       <BreadCrumb paths={formattedCategories} />
       <ProductCard
-        attributes={attribute}
+        attributes={attributes}
+        catalog_id={catalog_id}
         currency={currency}
         description={description}
         id={id_product}
         name={name}
         pictures={pictures}
         price={price}
+        status={status}
       />
     </>
   );

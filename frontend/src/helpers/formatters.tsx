@@ -1,7 +1,7 @@
 import React from "react";
 
 export const formatCategories = (categories: string): string[] => {
-  return categories.split("#");
+  return categories.split("|");
 };
 
 export const formatPrice = (
