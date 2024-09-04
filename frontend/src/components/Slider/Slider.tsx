@@ -34,16 +34,26 @@ const Slider: React.FC<SliderProps> = ({ pictures }) => {
             <img
               alt={`Producto Mercado Libre : ${index + 1}`}
               className="slides__image"
+              height="200"
               src={picture.url}
+              width="300"
             />
           </div>
         ))}
       </div>
 
-      <button className="nav nav-left" onClick={prevImage}>
+      <button
+        aria-label="Move left"
+        className="nav nav-left"
+        onClick={prevImage}
+      >
         <FaArrowLeft />
       </button>
-      <button className="nav nav-right" onClick={nextImage}>
+      <button
+        aria-label="Move right"
+        className="nav nav-right"
+        onClick={nextImage}
+      >
         <FaArrowRight />
       </button>
     </div>

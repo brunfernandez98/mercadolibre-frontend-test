@@ -1,6 +1,6 @@
-import Lottie from "lottie-react";
-
 import React from "react";
+
+import Lottie from "react-lottie";
 
 import pageNotFoundAnimation from "@assets/404.json";
 import componentNotFoundAnimation from "@assets/not-found.json";
@@ -22,10 +22,19 @@ const NotFoundContainer: React.FC<NotFoundContainerProps> = ({
     animationData ||
     (isPage ? pageNotFoundAnimation : componentNotFoundAnimation);
 
+  const lottieOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: selectedAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <div className={`not-found-container ${isPage ? "page" : "component"}`}>
       <div className="animation-container">
-        <Lottie animationData={selectedAnimation} loop={true} />
+        <Lottie height={400} options={lottieOptions} width={400} />
       </div>
       <p className="not-found-message">{message}</p>
     </div>

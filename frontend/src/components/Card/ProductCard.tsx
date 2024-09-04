@@ -95,7 +95,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       <div className="product-description-section">
         {description && (
-          <p className="product-description">{formatText(description)}</p>
+          <>
+            <h2>Descripción del producto</h2>
+            <p className="product-description">{formatText(description)}</p>
+          </>
         )}
       </div>
       {showMore && (

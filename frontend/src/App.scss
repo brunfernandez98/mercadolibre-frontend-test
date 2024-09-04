@@ -1,4 +1,6 @@
-@import 'normalize.css';
+@import "normalize.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
 $bg-color: #e1e0e0;
 
@@ -9,7 +11,7 @@ $bg-color: #e1e0e0;
 }
 
 :root {
-  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   background-color: $bg-color;
@@ -27,6 +29,7 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
+  font-family: "Poppins", sans-serif;
   flex-direction: column;
 }
 
