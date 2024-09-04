@@ -1,3 +1,7 @@
+import dotenv from "dotenv"
+
+dotenv.config()
+
 export enum MercadoLibre {
   PRODUCTS = "/products",
   ITEMS = "items",
@@ -10,4 +14,5 @@ export const config = {
   frontendUrl: process.env.FRONTEND_URL,
   token: process.env.ACCESS_TOKEN,
   api_key: process.env.API_KEY,
+  env: process.env.NODE_ENV,
 }

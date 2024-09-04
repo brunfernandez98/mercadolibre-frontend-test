@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS", // Webpack requiere CommonJS para su configuración
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": ["webpack.config.js"], // Incluir solo el archivo de configuración de Webpack
+  "exclude": ["./src/node_modules"]
+}
