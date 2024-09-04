@@ -70,7 +70,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           ) : (
             <>
               <span className="product-price">
-                {formatPrice(price, currency)}
+                {formatPrice(price, currency, catalog_id.slice(0, 3))}
               </span>
               <Button variant="primary">Comprar</Button>
             </>

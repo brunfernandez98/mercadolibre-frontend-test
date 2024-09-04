@@ -19,6 +19,7 @@
     "^@/controllers/(.*)$",
     "^@/routes/(.*)$",
     "^@/services/(.*)$",
+    "^@/context/(.*)$",
     "^[./]"
   ],
   "importOrderSeparation": true,
