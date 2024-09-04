@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+
 import "./Slider.scss";
 
 interface SliderProps {

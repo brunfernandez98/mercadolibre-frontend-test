@@ -1,4 +1,4 @@
-@import '../../breakpoints.scss';
+@import "../../breakpoints.scss";
 
 .product-card {
   display: flex;
@@ -10,7 +10,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 100%;
   background-color: #fff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   .product-content {
     display: flex;
@@ -167,4 +169,22 @@
       }
     }
   }
+}
+
+.no-images-message {
+  padding: 10px;
+  border: 1px solid #ffa726;
+  border-radius: 5px;
+  background-color: #fff3e0;
+  color: #ef6c00;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.no-images-message i.icon-warning {
+  margin-right: 8px;
+  color: #ef6c00;
+  font-size: 16px;
 }

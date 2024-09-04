@@ -1,19 +1,14 @@
-import axios from "axios"
+import { MercadoLibre } from "@/config/config"
 
-import { mapToCategory } from "@/models/category"
+import axiosInstance from "@/core/axiosInstance"
 
-import { MercadoLibre } from "@/config/endpoints"
-
-const baseUrl = process.env.MERCADO_LIBRE_API_URL
-
-export const getCategories = async (categoryId: string): Promise<string> => {
+export const getCategories = async (categoryId: string): Promise<[]> => {
   try {
-    const responseCategories = await axios.get(
-      `${baseUrl}${MercadoLibre.CATEGORIES}/${categoryId}`
+    const responseCategories = await axiosInstance.get(
+      `${MercadoLibre.CATEGORIES}/${categoryId}`
     )
     const categoriesData = responseCategories.data
-
-    return mapToCategory(categoriesData.path_from_root, "#")
+    return categoriesData.path_from_root
   } catch (error) {
     throw new Error("Error retrieving categories")
   }

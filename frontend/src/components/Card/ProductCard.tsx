@@ -1,78 +1,105 @@
-import React, { useState } from 'react'
-import './ProductCard.scss'
+import React, { useState } from "react";
 
-import { formatPrice, formatText } from '../../helpers/formatters'
-import Slider from '../Slider/Slider'
-import Button from '../Button/Button'
-
-import Modal from '../Modal/Modal'
-import { Attribute } from '../../domain/Attribute'
+import { Attribute } from "../../domain/Attribute";
+import { formatPrice, formatText } from "../../helpers/formatters";
+import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
+import Slider from "../Slider/Slider";
+import AlertMessage from "./AlertMessageCard";
+import "./ProductCard.scss";
 
 interface ProductCardProps {
-  id: string
-  name: string
-  pictures: Array<{ id: string; url: string }>
-  currency: string
-  price: number
-  description: string
-  attributes: Array<Attribute>
+  id: string;
+  catalog_id: string;
+  name: string;
+  pictures?: Array<{ id: string; url: string }>;
+  currency: string;
+  price: number;
+  status: string;
+  description: string;
+  attributes?: Array<Attribute>;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
-  id,
+  catalog_id,
   name,
-  pictures,
+  pictures = [],
   currency,
   price,
+  status,
   description,
-  attributes
+  attributes,
 }) => {
-  const [showMore, setShowMore] = useState(false)
-  const formattedPrice = formatPrice(price, currency)
+  const [showMore, setShowMore] = useState(false);
 
   const handleShowMore = () => {
-    setShowMore(true)
-  }
+    setShowMore(true);
+  };
 
   const handleCloseModal = () => {
-    setShowMore(false)
-  }
+    setShowMore(false);
+  };
 
   return (
     <div className="product-card">
       <div className="product-content">
         <div className="product-images">
-          <Slider pictures={pictures} />
+          {pictures.length > 0 ? (
+            <Slider pictures={pictures} />
+          ) : (
+            <p className="no-images-message">
+              <i className="icon-warning"></i> No hay imágenes disponibles
+            </p>
+          )}
         </div>
         <div className="product-details">
-          <span className="product-id">Código de catálogo: {id}</span>
+          <span className="product-id">Código de catálogo: {catalog_id}</span>
           <h2 className="product-name">{name}</h2>
-          <span className="product-price">{formattedPrice}</span>
-          <Button variant="primary">Comprar</Button>
+          {status === "unavailable" ? (
+            <AlertMessage
+              message="Este producto no está disponible. Elige otra variante."
+              variant="inactive"
+            />
+          ) : status === "has_variants" ? (
+            <AlertMessage
+              message="Este producto tiene variantes disponibles."
+              variant="variants"
+            />
+          ) : (
+            <>
+              <span className="product-price">
+                {formatPrice(price, currency)}
+              </span>
+              <Button variant="primary">Comprar</Button>
+            </>
+          )}
+
           <h3>Lo que tenes que saber del producto</h3>
           <ul className="product-attributes">
-            {attributes.slice(0, 5).map((attribute) => (
+            {attributes?.slice(0, 5).map((attribute) => (
               <li key={attribute.id}>
                 {attribute.name}: {attribute.value_name}
               </li>
             ))}
           </ul>
-          {attributes.length > 5 && (
+          {attributes && attributes.length > 5 && (
             <div>
-              <Button variant="text" onClick={handleShowMore}>
-                Ver más caracteristicas
+              <Button disabled={false} variant="text" onClick={handleShowMore}>
+                Ver más características
               </Button>
             </div>
           )}
         </div>
       </div>
       <div className="product-description-section">
-        <p className="product-description">{formatText(description)}</p>
+        {description && (
+          <p className="product-description">{formatText(description)}</p>
+        )}
       </div>
       {showMore && (
         <Modal onClose={handleCloseModal}>
           <div className="product-attributes">
-            {attributes.map((attribute) => (
+            {attributes?.map((attribute) => (
               <div key={attribute.id} className="product-attribute-item">
                 <strong>{attribute.name}:</strong> {attribute.value_name}
               </div>
@@ -81,7 +108,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </Modal>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

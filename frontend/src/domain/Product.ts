@@ -1,12 +1,16 @@
-import { Attribute } from './Attribute'
+import { Attribute } from "./Attribute";
 
 export interface Product {
-  id: string
-  name: string
-  description: string
-  pictures: { id: string; url: string }[]
-  price: number
-  currency: string
-  categories: string
-  attribute: Attribute[]
+  id: string;
+  catalog_id: string;
+  name: string;
+  pictures?: Array<{ id: string; url: string }>;
+  currency: string;
+  price: number;
+  description: string;
+  categories?: string;
+  attributes?: Attribute[];
+  status: ProductAvailabilityStatus;
 }
+
+type ProductAvailabilityStatus = "available" | "unavailable" | "has_variants";
