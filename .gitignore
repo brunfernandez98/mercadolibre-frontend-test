@@ -134,3 +134,6 @@ dist
 
 # VSCODE - DEBUG CONFIG
 *launch.json
+
+# BUILD
+*/build

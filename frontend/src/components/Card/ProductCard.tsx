@@ -55,14 +55,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className="product-details">
           <span className="product-id">Código de catálogo: {catalog_id}</span>
           <h2 className="product-name">{name}</h2>
-          {status === "unavailable" ? (
+          {status === "has_variants" ? (
             <AlertMessage
               message="Este producto no está disponible. Elige otra variante."
               variant="inactive"
             />
-          ) : status === "has_variants" ? (
+          ) : status === "unavailable" ? (
             <AlertMessage
-              message="Este producto tiene variantes disponibles."
+              message="Este producto no esta disponible."
               variant="variants"
             />
           ) : (

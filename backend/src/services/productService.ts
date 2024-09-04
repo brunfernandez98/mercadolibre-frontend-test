@@ -12,6 +12,7 @@ import axiosInstance from "@/core/axiosInstance"
 
 import { getCategories } from "@/services/categoryService"
 
+// Función principal
 export const getProductData = async (
   id: string
 ): Promise<Product | undefined> => {
@@ -22,41 +23,68 @@ export const getProductData = async (
 
   let product: SingleProduct = mapToSingleProduct(data)
 
-  if (data.status === "inactive") {
-    product = {
-      ...product,
-      status: ProductAvailabilityStatus.Unavailable,
-    } as Product
-  } else if (data.status === "active" && !data.buy_box_winner?.item_id) {
-    product = {
-      ...product,
-      status: ProductAvailabilityStatus.HasVariants,
-      description: data.short_description?.content || "",
-      categories: "",
-    } as Product
-  } else if (data.buy_box_winner?.item_id) {
-    const itemId = data.buy_box_winner.item_id
-    const category_id = data.buy_box_winner.category_id
+  if (isProductInactive(data)) {
+    return setProductStatus(product, ProductAvailabilityStatus.Unavailable)
+  }
 
-    const { description, categories } = await getDescriptionAndCategories(
-      itemId,
-      category_id
-    )
+  if (isProductActiveWithoutItemId(data)) {
+    return setProductVariantsStatus(product, data)
+  }
 
-    product = {
-      ...product,
-      price: data.buy_box_winner.price,
-      currency: data.buy_box_winner.currency_id,
-      description:
-        description?.data.plain_text ||
-        description?.data.short_description ||
-        "",
-      categories: categories.length > 0 ? mapToCategory(categories) : "",
-      status: ProductAvailabilityStatus.Available,
-    } as Product
+  if (data.buy_box_winner?.item_id) {
+    return await fetchProductWithBuyBoxWinner(product, data)
   }
 
   return product as Product
+}
+
+const isProductInactive = (data: any) => data.status === "inactive"
+
+const isProductActiveWithoutItemId = (data: any) =>
+  data.status === "active" && !data.buy_box_winner?.item_id
+
+const setProductVariantsStatus = (
+  product: SingleProduct,
+  data: any
+): Product => {
+  return {
+    ...product,
+    status: ProductAvailabilityStatus.HasVariants,
+    description: data.short_description?.content || "",
+    categories: "",
+  } as Product
+}
+
+const setProductStatus = (
+  product: SingleProduct,
+  status: ProductAvailabilityStatus
+): Product => {
+  return {
+    ...product,
+    status,
+  } as Product
+}
+
+const fetchProductWithBuyBoxWinner = async (
+  product: SingleProduct,
+  data: any
+): Promise<Product> => {
+  const { item_id: itemId, category_id: categoryId } = data.buy_box_winner
+
+  const { description, categories } = await getDescriptionAndCategories(
+    itemId,
+    categoryId
+  )
+
+  return {
+    ...product,
+    price: data.buy_box_winner.price,
+    currency: data.buy_box_winner.currency_id,
+    description:
+      description?.data.plain_text || description?.data.short_description || "",
+    categories: categories.length > 0 ? mapToCategory(categories) : "",
+    status: ProductAvailabilityStatus.Available,
+  } as Product
 }
 
 const getDescriptionAndCategories = async (
