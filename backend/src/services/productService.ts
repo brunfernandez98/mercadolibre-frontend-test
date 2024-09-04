@@ -12,7 +12,6 @@ import axiosInstance from "@/core/axiosInstance"
 
 import { getCategories } from "@/services/categoryService"
 
-// Función principal
 export const getProductData = async (
   id: string
 ): Promise<Product | undefined> => {
@@ -91,17 +90,28 @@ const getDescriptionAndCategories = async (
   itemId: string,
   categoryId: string
 ) => {
-  try {
-    const [responseDescription, categories] = await Promise.all([
-      axiosInstance.get(
-        `${MercadoLibre.ITEMS}/${itemId}/${MercadoLibre.DESCRIPTION}`
-      ),
-      getCategories(categoryId),
-    ])
+  const [descriptionResult, categoriesResult] = await Promise.allSettled([
+    axiosInstance.get(
+      `${MercadoLibre.ITEMS}/${itemId}/${MercadoLibre.DESCRIPTION}`
+    ),
+    getCategories(categoryId),
+  ])
 
-    return { description: responseDescription, categories }
-  } catch (error) {
-    console.error("Error fetching description and categories:", error)
-    return { description: undefined, categories: [] }
+  let description, categories
+
+  if (descriptionResult.status === "fulfilled") {
+    description = descriptionResult.value
+  } else {
+    console.error("Error fetching description:", descriptionResult.reason)
+    return description
   }
+
+  if (categoriesResult.status === "fulfilled") {
+    categories = categoriesResult.value
+  } else {
+    console.error("Error fetching categories:", categoriesResult.reason)
+    categories = []
+  }
+
+  return { description, categories }
 }

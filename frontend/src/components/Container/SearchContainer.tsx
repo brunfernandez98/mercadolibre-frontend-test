@@ -3,7 +3,7 @@ import { useForm } from "hooks/useForm";
 import { useLoadingContext } from "hooks/useLoadingContext";
 
 import { FaSearch, FaSpinner, FaTimes } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "./SearchContainer.scss";
 
@@ -12,9 +12,11 @@ interface SearchContainerProps {
 }
 
 const SearchContainer: React.FC<SearchContainerProps> = ({ children }) => {
-  const { formValues, setFieldValue, resetForm } = useForm({
+  const { formValues, setFieldValue } = useForm({
     id: "",
   });
+
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,13 +36,13 @@ const SearchContainer: React.FC<SearchContainerProps> = ({ children }) => {
   const { loading } = useLoadingContext();
 
   const handleReset = () => {
-    resetForm();
     navigate(`/`);
   };
 
   return (
     <div className="container-wrapper">
       <div className="search-container">
+        {location.pathname === "/" && <h1>Indica el id del producto</h1>}
         <form className="search-container__search-bar" onSubmit={handleSubmit}>
           <label
             className="search-container__search-bar__label-hidden"

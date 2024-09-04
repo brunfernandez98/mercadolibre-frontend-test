@@ -2,7 +2,7 @@ import { MercadoLibre } from "@/config/config"
 
 import axiosInstance from "@/core/axiosInstance"
 
-export const getCategories = async (categoryId: string): Promise<[]> => {
+export const getCategories = async (categoryId: string) => {
   try {
     const responseCategories = await axiosInstance.get(
       `${MercadoLibre.CATEGORIES}/${categoryId}`

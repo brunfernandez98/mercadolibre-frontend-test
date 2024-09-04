@@ -1,4 +1,4 @@
-import { config } from "@endpoints/config";
+import { config } from "@endpoints/endpoints";
 
 export const coreFetch = async (
   url: string,

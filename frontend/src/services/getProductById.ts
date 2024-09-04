@@ -1,5 +1,5 @@
 import { Product } from "@domain/Product";
-import { ServerEndpoints, config } from "@endpoints/config";
+import { ServerEndpoints, config } from "@endpoints/endpoints";
 
 import { coreFetch } from "./coreFetch";
 

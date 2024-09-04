@@ -7,7 +7,7 @@ const config: Config = {
     "^.+\\.tsx?$": "ts-jest",
   },
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-  transformIgnorePatterns: ["<rootDir>/node_modules/"],
+  transformIgnorePatterns: ["/node_modules/", "<rootDir>/node_modules/"],
   moduleNameMapper: {
     "@/(.*)": "<rootDir>/src/$1",
   },
@@ -16,6 +16,7 @@ const config: Config = {
       tsconfig: "tsconfig.json",
     },
   },
+  testPathIgnorePatterns: ["/build/"],
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: "coverage",

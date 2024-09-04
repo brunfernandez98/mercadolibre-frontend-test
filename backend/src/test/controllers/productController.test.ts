@@ -1,3 +1,4 @@
+import { Product, ProductAvailabilityStatus } from "@/models/product"
 import { NextFunction, Request, Response } from "express"
 
 import { getProductById } from "@/controllers/productController"
@@ -28,14 +29,16 @@ describe("getProductById Controller", () => {
   })
 
   it("should respond with product data when getProductData resolves", async () => {
-    const mockProductData = {
+    const mockProductData: Product = {
       id: "MLA123456",
+      catalog_id: "MLA123456",
       name: "PlayStation 5",
       categories: "GAME#CONSOLE#PLAY",
       pictures: [{ id: "1", url: "http://meliexample.com/image.jpg" }],
       currency: "USD",
       price: 100,
-      description: "This is a sample PLAY5 description.",
+      description: "PLAY5 description.",
+      status: ProductAvailabilityStatus.Available,
     }
 
     mockedGetProductData.mockResolvedValueOnce(mockProductData)
