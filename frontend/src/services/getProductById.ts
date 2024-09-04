@@ -10,8 +10,6 @@ export const getProductById = async (
 
   const response = await coreFetch(url);
 
-  console.log(response);
-
   if (response.status === 404) {
     return null;
   }
