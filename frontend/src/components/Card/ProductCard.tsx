@@ -1,7 +1,9 @@
+import { Attribute } from "@domain/Attribute";
+
 import React, { useState } from "react";
 
-import { Attribute } from "../../domain/Attribute";
-import { formatPrice, formatText } from "../../helpers/formatters";
+import { formatPrice, formatText } from "@helpers/formatters";
+
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import Slider from "../Slider/Slider";

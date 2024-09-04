@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import meli_logo from "../../assets/meli_logo.png";
+
+import meli_logo from "@assets/meli_logo.png";
+
 import "./Header.scss";
 
 const Header = () => {

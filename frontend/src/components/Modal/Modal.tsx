@@ -1,15 +1,17 @@
-import React from 'react'
-import './Modal.scss'
-import { FaTimes } from 'react-icons/fa'
+import React from "react";
+
+import { FaTimes } from "react-icons/fa";
+
+import "./Modal.scss";
 
 interface ModalProps {
-  onClose: () => void
-  children: React.ReactNode
+  onClose: () => void;
+  children: React.ReactNode;
 }
 
 const stopToPropagate = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-  e.stopPropagation()
-}
+  e.stopPropagation();
+};
 
 const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
   return (
@@ -19,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({ onClose, children }) => {
         {children}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;
