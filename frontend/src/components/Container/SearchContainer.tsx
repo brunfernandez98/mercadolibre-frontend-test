@@ -36,6 +36,7 @@ const SearchContainer: React.FC<SearchContainerProps> = ({ children }) => {
   const { loading } = useLoadingContext();
 
   const handleReset = () => {
+    setFieldValue("id", "");
     navigate(`/`);
   };
 
@@ -69,13 +70,7 @@ const SearchContainer: React.FC<SearchContainerProps> = ({ children }) => {
             disabled={loading}
             type="submit"
           >
-            {loading ? (
-              <>
-                <FaSpinner className="spinner" />
-              </>
-            ) : (
-              "Buscar"
-            )}
+            {loading ? <FaSpinner className="spinner" /> : "Buscar"}
           </button>
         </form>
         <div className="search-container_product-container">{children}</div>

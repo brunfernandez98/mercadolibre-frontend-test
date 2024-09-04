@@ -26,17 +26,14 @@ const NotFoundContainer: React.FC<NotFoundContainerProps> = ({
     loop: true,
     autoplay: true,
     animationData: selectedAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
   };
 
   return (
-    <div className={`not-found-container ${isPage ? "page" : "component"}`}>
-      <div className="animation-container">
-        <Lottie height={400} options={lottieOptions} width={400} />
-      </div>
+    <div className={`not-found-container `}>
       <p className="not-found-message">{message}</p>
+      <div className="animation-container">
+        <Lottie options={lottieOptions} />
+      </div>
     </div>
   );
 };

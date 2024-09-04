@@ -1,5 +1,7 @@
 @import "normalize.css";
 
+@import "breakpoints.scss";
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
 
 $bg-color: #e1e0e0;
@@ -38,8 +40,24 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 1.2em;
   line-height: 1.1;
+
+  @include breakpoint(sm) {
+    font-size: 2em;
+  }
+
+  @include breakpoint(md) {
+    font-size: 2.2em;
+  }
+
+  @include breakpoint(lg) {
+    font-size: 2.4em;
+  }
+
+  @include breakpoint(xl) {
+    font-size: 2.8em;
+  }
 }
 
 img {
